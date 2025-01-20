@@ -1,5 +1,4 @@
 import { describe, onTestFinished, test, vi } from "vitest";
-import { sum } from ".";
 
 describe("sum", () => {
   test("requests from API", async () => {
@@ -8,12 +7,16 @@ describe("sum", () => {
     console.log("2. Clock frozen");
 
     onTestFinished(() => {
-      console.log("6. Clock reset");
+      console.log("4. Clock reset");
       vi.useRealTimers();
     });
 
-    await sum(1, 2);
+    const response = await fetch("http://localhost:3000/api");
 
-    console.log("3. API called");
+    console.log("3.1 API response received");
+
+    const json = (await response.json()) as any;
+
+    console.log("3.2. API response parsed");
   });
 });
