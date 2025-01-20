@@ -1,0 +1,44 @@
+{
+  // using node_modules: workaround for https://github.com/TypeStrong/ts-node/issues/2076
+  "extends": "./node_modules/@tsconfig/node22/tsconfig.json",
+
+  "ts-node": {
+    "files": true,
+    "transpileOnly": true,
+    "esm": true,
+    "swc": true,
+    "compilerOptions": {
+      "module": "Node16",
+      "moduleResolution": "Node16"
+    }
+  },
+
+  "compilerOptions": {
+    "lib": ["ESNext"],
+    "target": "es2023",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+
+    "preserveConstEnums": true,
+
+    "noImplicitAny": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "noFallthroughCasesInSwitch": true,
+
+    "useUnknownInCatchVariables": false,
+
+    "outDir": "build",
+
+    "esModuleInterop": true,
+
+    "module": "Node16",
+    "moduleResolution": "Node16",
+
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./src/*"],
+      "test/*": ["./test/*"]
+    }
+  }
+}
